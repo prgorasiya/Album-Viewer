@@ -69,15 +69,11 @@ extension UIImage {
     
     
     public func coloredImage(color: UIColor, size: CGSize) -> UIImage? {
-        
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        
         color.setFill()
         UIRectFill(CGRect(origin: CGPoint(), size: size))
-        
         guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return nil }
         UIGraphicsEndImageContext()
-        
         return image
     }
 }
