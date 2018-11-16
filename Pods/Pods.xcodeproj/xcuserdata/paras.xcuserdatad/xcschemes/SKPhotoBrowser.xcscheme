@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B3C8195BD9663EE0190825822CE692B0"
-               BuildableName = "Pods_Album_Viewer.framework"
-               BlueprintName = "Pods-Album Viewer"
+               BlueprintIdentifier = "CF46372C89A777C91974B700D70677AE"
+               BuildableName = "SKPhotoBrowser.framework"
+               BlueprintName = "SKPhotoBrowser"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B3C8195BD9663EE0190825822CE692B0"
-            BuildableName = "Pods_Album_Viewer.framework"
-            BlueprintName = "Pods-Album Viewer"
+            BlueprintIdentifier = "CF46372C89A777C91974B700D70677AE"
+            BuildableName = "SKPhotoBrowser.framework"
+            BlueprintName = "SKPhotoBrowser"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

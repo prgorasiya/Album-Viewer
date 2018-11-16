@@ -14,30 +14,24 @@ class AlbumViewModal: NSObject {
     
     var albums: [AlbumModel] = []
     
-    func fetchAlbums( complete: @escaping (_ success: Bool, _ photos: [AlbumModel]?)-> Void) {
+    func fetchAlbums(page: Int?, limit: Int?, complete: @escaping (_ success: Bool, _ albums: [AlbumModel]?)-> Void) {
         DispatchQueue.global().async {
-            ApiManager.sharedInstance.getDataWith(URL: "albums", parameters: nil, success: { (responseObject) in
+            let currentPage = page != nil ? page : 0
+            let currentLimit = limit != nil ? limit : 20
+            ApiManager.sharedInstance.getDataWith(URL: String(format: MyAPI.kService_Get_Albums, currentPage!, currentLimit!), parameters: nil, success: { (responseObject) in
+                var mappedAlbums = [AlbumModel]()
                 for case let object in responseObject{
                     let json = object as! Dictionary<String, AnyObject>
                     let albumModel: AlbumModel = try! unbox(dictionary: json)
-                    self.albums.append(albumModel)
+                    mappedAlbums.append(albumModel)
                 }
-                complete(true, self.albums)
+                if mappedAlbums.count > 0 {
+                    self.albums.append(contentsOf: mappedAlbums)
+                }
+                complete(true, mappedAlbums)
             }, failure: { (errorCode, errorTitle, errorMessage) in
                 complete(false, nil)
             })
         }
     }
-}
-
-
-extension Dictionary {
-    func jsonString() -> NSString? {
-        let jsonData = try? JSONSerialization.data(withJSONObject: self, options: [])
-        guard jsonData != nil else {return nil}
-        let jsonString = String(data: jsonData!, encoding: .utf8)
-        guard jsonString != nil else {return nil}
-        return jsonString! as NSString
-    }
-    
 }

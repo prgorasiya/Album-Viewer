@@ -1,5 +1,5 @@
 //
-//  AlbumModel.swift
+//  PhotoModel.swift
 //  Album Viewer
 //
 //  Created by paras gorasiya on 16/11/18.
@@ -9,17 +9,21 @@
 import Foundation
 import Unbox
 
-struct AlbumModel {
-    let id: Int?
-    let userId: Int?
+struct PhotoModel {
+    let albumId: String?
+    let id: String?
     let title: String?
+    let url: String?
+    let thumbnailUrl: String?
 }
 
 
-extension AlbumModel: Unboxable {
+extension PhotoModel: Unboxable {
     init(unboxer: Unboxer) throws {
+        albumId = unboxer.unbox(key: "albumId")
         id = unboxer.unbox(key: "id")
-        userId = unboxer.unbox(key: "userId")
         title = unboxer.unbox(keyPath: "title")
+        url = unboxer.unbox(key: "url")
+        thumbnailUrl = unboxer.unbox(key: "thumbnailUrl")
     }
 }

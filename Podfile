@@ -7,5 +7,7 @@ target 'Album Viewer' do
 
   pod 'Alamofire', '~> 4.7'
   pod "Unbox"
+  pod 'MKProgress', '~> 1.0.8'
+  pod 'SKPhotoBrowser'
 
 end
